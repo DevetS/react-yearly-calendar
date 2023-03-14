@@ -109,6 +109,12 @@ class Calendar extends Component {
           days.push(<th className="week-separator" key={`seperator-${i}`} />);
         }
       }
+      if (true) {
+        if ((i === 1 || i % 7 === firstDayOfWeek) && days.length) {
+          // push week separator
+          days.push(<th className="week-number" key={`wnum-${i}`} />);
+        }
+      }
       days.push(
         <th key={`weekday-${i}`} className={i % 7 === 0 ? 'bolder' : ''}>
           {day}
