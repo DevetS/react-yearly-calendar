@@ -10,6 +10,7 @@ const propTypes = {
   month: PropTypes.number.isRequired,
   forceFullWeeks: PropTypes.bool.isRequired,
   showWeekSeparators: PropTypes.bool.isRequired,
+  showWeekNumbers: PropTypes.bool.isRequired,
   selectedDay: momentObj.isRequired,
   firstDayOfWeek: PropTypes.number.isRequired,
   selectingRange: PropTypes.arrayOf(momentObj),
@@ -44,6 +45,7 @@ class Month extends Component {
       this.props.year !== nextProps.year ||
       this.props.forceFullWeeks !== nextProps.forceFullWeeks ||
       this.props.showWeekSeparators !== nextProps.showWeekSeparators ||
+      this.props.showWeekNumbers !== nextProps.showWeekNumbers ||
       this.props.firstDayOfWeek !== nextProps.firstDayOfWeek ||
       this.props.selectRange !== nextProps.selectRange ||
       this.props.customClasses !== nextProps.customClasses ||
@@ -134,6 +136,7 @@ class Month extends Component {
       month,
       forceFullWeeks,
       showWeekSeparators,
+      showWeekNumbers,
       selectedDay,
       firstDayOfWeek,
       selectingRange,
@@ -239,12 +242,12 @@ class Month extends Component {
           days.push(<td className="week-separator" key={`seperator-${i}`} />);
         }
       }
-      if (true) {
+      if (showWeekNumbers) {
         if (i === 0 || (i - 1) % 7 === 0) {
           // push week separator
           days.push(
             <td className="week-number" key={`wnum-${i}`}>
-              {(i - 1) % 35 === 0 ? (!isNaN(day.week()) ? 'W' + day.week() : '') : 'W' + week}
+              {i !== 0 && (i - 1) % 35 === 0 ? (!isNaN(day.week()) ? 'W' + day.week() : '') : 'W' + week}
             </td>
           );
         }
