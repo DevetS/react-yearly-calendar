@@ -237,6 +237,16 @@ class Month extends Component {
           days.push(<td className="week-separator" key={`seperator-${i}`} />);
         }
       }
+      if (true) {
+        if ((i - 1) % 7 === firstDayOfWeek && days.length) {
+          // push week separator
+          days.push(
+            <td className="week-number" key={`wnum-${i}`}>
+              W{day.week()}
+            </td>
+          );
+        }
+      }
       days.push(
         <Day
           key={`day-${i}`}
