@@ -247,7 +247,7 @@ class Month extends Component {
           // push week separator
           days.push(
             <td className="week-number" key={`wnum-${i}`}>
-              {i !== 0 && (i - 1) % 35 === 0 ? (!isNaN(day.week()) ? 'W' + day.week() : '') : 'W' + week}
+              {i - 1 !== 0 && (i - 1) % 35 === 0 ? (!isNaN(day.week()) ? 'W' + day.week() : '') : 'W' + week}
             </td>
           );
         }
