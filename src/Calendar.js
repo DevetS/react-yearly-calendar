@@ -110,7 +110,7 @@ class Calendar extends Component {
         }
       }
       if (true) {
-        if ((i === 0 || i % 7 === firstDayOfWeek) && days.length) {
+        if (i === 0 || i % 7 === firstDayOfWeek) {
           // push week separator
           days.push(<th className="week-number" key={`wnum-${i}`} />);
         }

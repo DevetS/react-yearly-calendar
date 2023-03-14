@@ -238,7 +238,7 @@ class Month extends Component {
         }
       }
       if (true) {
-        if ((i - 1) % 7 === 0 && days.length) {
+        if (i === 0 || (i - 1) % 7 === 0) {
           // push week separator
           days.push(
             <td className="week-number" key={`wnum-${i}`}>
