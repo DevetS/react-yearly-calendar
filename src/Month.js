@@ -157,8 +157,10 @@ class Month extends Component {
 
     // day-generating loop
     const days = [];
+    let lastWeek = 0;
     range(firstDayOfWeek + 1, totalDays + firstDayOfWeek + 1).forEach(i => {
       const day = moment([year, month, i - prevMonthDaysCount]);
+      lastWeek = day.isValid() ? day.week() : lastWeek;
 
       // pick appropriate classes
       const classes = [];
@@ -242,7 +244,7 @@ class Month extends Component {
           // push week separator
           days.push(
             <td className="week-number" key={`wnum-${i}`}>
-              {!isNaN(day.week()) ? 'W' + day.week() : ''}
+              {i % 35 == 0 ? (!isNaN(day.week()) ? 'W' + day.week() : '') : 'W' + lastWeek}
             </td>
           );
         }
